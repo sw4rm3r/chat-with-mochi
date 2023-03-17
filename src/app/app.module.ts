@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {NbThemeModule, NbLayoutModule, NbChatModule} from '@nebular/theme';
+import {NbThemeModule, NbLayoutModule, NbChatModule, NbIconModule} from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { AppRoutingModule } from './app-routing.module';
 import {HttpClient, HttpClientModule, HttpHandler} from "@angular/common/http";
@@ -12,16 +12,17 @@ import {HttpClient, HttpClientModule, HttpHandler} from "@angular/common/http";
   declarations: [
     AppComponent
   ],
-    imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        NbThemeModule.forRoot({name: 'default'}),
-        NbLayoutModule,
-        NbEvaIconsModule,
-        AppRoutingModule,
-        NbChatModule,
-        HttpClientModule
-    ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    NbThemeModule.forRoot({name: 'default'}),
+    NbLayoutModule,
+    NbEvaIconsModule,
+    AppRoutingModule,
+    NbChatModule,
+    HttpClientModule,
+    NbIconModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -1,6 +1,8 @@
 @forward '@nebular/theme/styles/theming';
 @use '@nebular/theme/styles/theming' as *;
 @use '@nebular/theme/styles/themes/default';
+@use '@nebular/theme/styles/themes/cosmic';
+@use '@nebular/theme/styles/themes/corporate';
 
 $nb-themes: nb-register-theme((
 
@@ -17,3 +19,18 @@ $nb-themes: nb-register-theme((
   // color-primary-900: #091c7a,
 
 ), default, default);
+
+$nb-themes: nb-register-theme((
+  // add your variables here like:
+  // color-bg: #4ca6ff,
+), cosmic, cosmic);
+
+$nb-themes: nb-register-theme((
+  // add your variables here like:
+  // color-bg: #4ca6ff,
+), default , default);
+
+$nb-themes: nb-register-theme((
+  // add your variables here like:
+  // color-bg: #4ca6ff,
+), corporate , corporate);

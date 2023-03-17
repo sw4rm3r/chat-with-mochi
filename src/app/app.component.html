@@ -1,7 +1,17 @@
 <nb-layout>
 
   <nb-layout-header fixed>
-  Chat with Mochi
+  <div style="display: flex; width: 100%; justify-content: space-between">
+    <span>Chat with Mochi</span>
+    <div>
+      <input type="checkbox" (change)="changeTheme($event)" class="checkbox" id="checkbox">
+      <label for="checkbox" class="label">
+        <nb-icon icon="sun" status="warning"></nb-icon>
+        <nb-icon icon="moon" status="primary"></nb-icon>
+        <div class='ball'></div>
+      </label>
+    </div>
+  </div>
   </nb-layout-header>
 
   <nb-layout-column>
@@ -11,7 +21,7 @@
           <div class="col-auto">
             <img [src]="mochiAvatar" style="width: 60px; border-radius: 50%">
           </div>
-          <div class="col-11" style="align-self: center">
+          <div class="col-auto" style="align-self: center">
             <div>Alessandro Mochi Onori</div>
           </div>
 
@@ -33,12 +43,16 @@
         [avatar]="msg.user.avatar"
       >
       </nb-chat-message>
+      <nb-chat-message *ngIf="loading" sender="Alessandro" [avatar]="mochiAvatar" type="loading">Test</nb-chat-message>
+      <div *nbCustomMessage="'loading'; let data">
+        <div class="dot-elastic"></div>
+      </div>
       <nb-chat-form (send)="sendMessage($event)" [messagePlaceholder]="'Scrivi ad Alessandro...'" [dropFiles]="true"> </nb-chat-form>
     </nb-chat>
   </nb-layout-column>
 
-  <nb-layout-footer fixed>
-  <!-- Insert footer here -->
+  <nb-layout-footer fixed style="justify-content: end">
+    <span class="text-muted" style="font-size: 12px">Sviluppato da Valerio Montieri per esercitazione con l'api di ChatGPT</span>
   </nb-layout-footer>
 
 </nb-layout>
