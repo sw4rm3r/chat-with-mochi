@@ -42,4 +42,12 @@ export class ChatService {
     }
     return this.http.post('https://api.openai.com/v1/chat/completions', body, requestOptions);
   }
+
+  saveLogs(message: ChatGptMessage) {
+    const headers = new HttpHeaders({
+      'Content-Type':'application/json; charset=utf-8',
+    });
+    const requestOptions = { headers: headers };
+    return this.http.post('https://mochi-backend.vercel.app/messages', message, requestOptions);
+  }
 }

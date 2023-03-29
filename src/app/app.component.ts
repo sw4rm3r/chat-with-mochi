@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {ChatGptMessage, ChatService} from "./services/chat.service";
-import {finalize, tap} from "rxjs";
+import {finalize, switchMap, tap} from "rxjs";
 import {NbThemeService} from "@nebular/theme";
 
 @Component({
@@ -54,11 +54,13 @@ export class AppComponent implements OnInit {
         name: 'Tu',
       },
     });
-    this.chatGptMessages.push({
+    const message: any = {
       role: 'user',
       content: event.message
-    });
+    };
+    this.chatGptMessages.push(message);
     this.loading = true;
+    this.chat.saveLogs(message).subscribe();
     this.chat.sendMessage(this.chatGptMessages).pipe(
       tap((res: any) => {
         const receivedMessage = res.choices[0].message;
@@ -74,6 +76,7 @@ export class AppComponent implements OnInit {
           }
         )
       }),
+      switchMap(res => this.chat.saveLogs(res.choices[0].message)),
       finalize(() => this.loading = false)
     ).subscribe();
   }
