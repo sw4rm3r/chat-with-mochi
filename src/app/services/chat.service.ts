@@ -20,7 +20,7 @@ export class ChatService {
 
   // Crea una variabile per la tua chiave API
   private apiKey = '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';
-  private model = 'gpt-4';
+  private model = 'gpt-3.5-turbo';
   private basicPrompt!: string;
 
   // Inietta il modulo HTTP nel costruttore del servizio chat
